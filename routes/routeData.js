@@ -1,33 +1,34 @@
 const express = require('express');
 const router = express.Router();
 const { 
-    index, showData, updateData, tambahData, deleteData
+    index, showAnggota, updateAnggota, tambahAnggota, deleteAnggota
 } = require('../controller/controller.js');
 const { body } = require('express-validator');
 
 router.get("/", index);
 
 router.post(
-    "/tambahData", 
+    "/tambahAnggota", 
     [
     // validation
-    body("title").notEmpty(),
-    body("content").notEmpty(),
+    body('nama').notEmpty(),
+    body('image_url').notEmpty(),
+    body('deskripsi_singkat').notEmpty()
 ], 
-tambahData
+tambahAnggota
 );
 
-router.get('/(:id)', showData);
+router.get('/(:id)', showAnggota);
 
 router.patch('/update/:id', [
 
     //validation
-    body('Nama').notEmpty(),
-    body('imageURL').notEmpty(),
+    body('nama').notEmpty(),
+    body('image_url').notEmpty(),
     body('deskripsi_singkat').notEmpty()
 
-], updateData);
+], updateAnggota);
 
-router.delete('/delete/(:id)', deleteData);
+router.delete('/delete/(:id)', deleteAnggota);
 
 module.exports = router;

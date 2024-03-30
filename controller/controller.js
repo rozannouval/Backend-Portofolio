@@ -23,7 +23,7 @@ const index = ('/', function (req, res) {
 })
 
 
-function showData (req, res) {
+function showAnggota (req, res) {
 
     let id = req.params.id;
 
@@ -54,7 +54,7 @@ function showData (req, res) {
     })
 }
 
-function tambahData (req, res) {
+function tambahAnggota (req, res) {
 
     const validationreq = validationResult(req);
 
@@ -90,7 +90,7 @@ function tambahData (req, res) {
 };
 
 
-function updateData (req, res) {
+function updateAnggota (req, res) {
 
     const errors = validationResult(req);
 
@@ -127,11 +127,11 @@ function updateData (req, res) {
 
 };
 
-function deleteData(req, res) {
+function deleteAnggota(req, res) {
 
     let id = req.params.id;
      
-    connection.query(`DELETE FROM posts WHERE id = ${id}`, function(err, rows) {
+    connection.query(`DELETE FROM card_anggota WHERE id = ${id}`, function(err, rows) {
         //if(err) throw err
         if (err) {
             return res.status(500).json({
@@ -148,4 +148,4 @@ function deleteData(req, res) {
 };
 
 
-module.exports = { index, showData, updateData, tambahData, deleteData };
+module.exports = { index, showAnggota, updateAnggota, tambahAnggota, deleteAnggota };
